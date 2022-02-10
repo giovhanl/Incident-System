@@ -2,12 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { IncidentDetailRepository, IncidentMasterRepository } from 'src/repos/incident.repository';
 import { UsersRepository } from 'src/repos/user.repository';
 import { IncidentMaster } from 'src/schema/incident.schema';
+import { IncidentStatus } from '../model/incident.enum';
 import { IncidentMasterModel } from '../model/incident.model';
 
 
 @Injectable()
 export class IncidentsService {
-  constructor(private readonly usersRepository: UsersRepository,
+  constructor(
     private readonly incidentMasterRepo: IncidentMasterRepository,
     private readonly incidentDetailRepo: IncidentDetailRepository) {}
 
@@ -53,20 +54,20 @@ export class IncidentsService {
     return this.incidentMasterRepo.update({ incidentId }, incidentUpdates);
   }
 
-  async assignincident(incidentId: string, assignToUserId: number): Promise<IncidentMaster> {
+  async assignincident(incidentId: string, assignToUserId: string): Promise<IncidentMaster> {
     return this.incidentMasterRepo.update({ incidentId }, { developer: assignToUserId });
   }
 
   // TODO: record in the detail the action that it was acknowledged by user
-  async acknowledgeincident(incidentId: string, userId: number): Promise<IncidentMaster> {
+  async acknowledgeincident(incidentId: string, userId: string): Promise<IncidentMaster> {
     return this.incidentMasterRepo.update({ incidentId }, { developer: userId });
   }
 
-  async resolvedincident(incidentId: string, userId: number): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.update({ incidentId }, { status: 'Resolved' });
+  async resolvedincident(incidentId: string, userId: string): Promise<IncidentMaster> {
+    return this.incidentMasterRepo.update({ incidentId }, { status: IncidentStatus.Resolved });
   }
 
-  async deleteincident(incidentId: string): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.delete({ incidentId: incidentId  });
+  async deleteincident(incidentId: string): Promise<boolean> {
+    return this.incidentMasterRepo.delete({ _id: incidentId  });
   }
 }

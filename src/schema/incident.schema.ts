@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 export type IncidentMasterDocument = IncidentMaster & Document;
-
+export type IncidentDetailDocument = IncidentDetail & Document;
 @Schema()
 export class IncidentMaster {
   @Prop()
@@ -48,7 +48,7 @@ export class IncidentMaster {
   modifiedBy: string;
 }
 
-export type IncidentDetailDocument = IncidentDetail & Document;
+
 
 @Schema()
 export class IncidentDetail {

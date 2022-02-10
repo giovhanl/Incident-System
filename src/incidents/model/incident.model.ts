@@ -9,6 +9,9 @@ export class IncidentMasterModel {
     }
 
     @ApiProperty()
+    incidentId: string;
+
+    @ApiProperty()
     title: string;
   
     @ApiProperty()
