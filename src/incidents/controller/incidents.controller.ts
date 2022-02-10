@@ -9,13 +9,13 @@ import { IncidentsService } from '../service/incidents.service';
 @ApiTags("incidents")
 @Controller('incidents')
 export class IncidentsController {
-    constructor(private usersService: UsersService,
+    constructor(
         private readonly incidentsService: IncidentsService) {}
 
   @ApiCreatedResponse({ type: IncidentMasterModel })
   @Get()
   getAll(): any {
-    return this.usersService.getAll();
+    return this.incidentsService.getAll();
   }
 
   @Get(':id')

@@ -16,6 +16,6 @@ import { IncidentsService } from './service/incidents.service';
       MongooseModule.forFeature([{ name: IncidentDetail.name, schema: IncidentDetailSchema }]),
     ],
   controllers: [IncidentsController],
-  providers: [UserModel, UsersRepository, UsersService, IncidentsService, IncidentMasterRepository, IncidentDetailRepository]
+  providers: [IncidentsService, IncidentMasterRepository, IncidentDetailRepository]
 })
 export class IncidentsModule {}

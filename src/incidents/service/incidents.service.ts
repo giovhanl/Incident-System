@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { IncidentDetailRepository, IncidentMasterRepository } from 'src/repos/incident.repository';
-import { UsersRepository } from 'src/repos/user.repository';
 import { IncidentMaster } from 'src/schema/incident.schema';
 import { IncidentStatus } from '../model/incident.enum';
 import { IncidentMasterModel } from '../model/incident.model';
