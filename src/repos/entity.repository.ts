@@ -1,6 +1,7 @@
 import { Document, FilterQuery, Model, UpdateQuery } from 'mongoose';
+import { IEntityRepository } from './entity.IRepository';
 
-export abstract class EntityRepository<T extends Document> {
+export abstract class EntityRepository<T extends Document> implements IEntityRepository<T> {
   constructor(protected readonly entityModel: Model<T>) {}
 
   async findOne(entityFilterQuery: FilterQuery<T>): Promise<T | null> {

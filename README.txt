@@ -22,7 +22,7 @@ npm run build --> creates the /dest folder
 2. nest new IncidentSystem -- create new project
     npm run start:dev
 3. nest generate module {user} -- create new module
-4. nest geneate controller {user} -- create new controller
+4. nest generate controller {user} -- create new controller
 5. nest generate service {user} -- creates new service
 
 for mongoose

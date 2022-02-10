@@ -1,12 +1,13 @@
 import { Body, Controller, Get, Post, Param } from '@nestjs/common';
-import { ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UserModel } from '../model/user.model';
 import { UsersService } from '../service/users.service';
-
+@ApiTags("Users")
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  @ApiCreatedResponse({ type: UserModel })
   @Get()
   getAll(): any {
     return this.usersService.getAll();
