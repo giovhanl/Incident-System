@@ -50,20 +50,20 @@ export class IncidentsService {
   }
 
   async update(incidentId: string, incidentUpdates: IncidentMasterModel): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.update({ incidentId }, incidentUpdates);
+    return this.incidentMasterRepo.update({ _id: incidentId  }, incidentUpdates);
   }
 
   async assignincident(incidentId: string, assignToUserId: string): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.update({ incidentId }, { developer: assignToUserId });
+    return this.incidentMasterRepo.update({ _id: incidentId  }, { developer: assignToUserId });
   }
 
   // TODO: record in the detail the action that it was acknowledged by user
   async acknowledgeincident(incidentId: string, userId: string): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.update({ incidentId }, { developer: userId });
+    return this.incidentMasterRepo.update({ _id: incidentId  }, { developer: userId });
   }
 
   async resolvedincident(incidentId: string, userId: string): Promise<IncidentMaster> {
-    return this.incidentMasterRepo.update({ incidentId }, { status: IncidentStatus.Resolved });
+    return this.incidentMasterRepo.update({ _id: incidentId }, { state: IncidentStatus.Resolved });
   }
 
   async deleteincident(incidentId: string): Promise<boolean> {
