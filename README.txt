@@ -9,9 +9,12 @@ or/and for dev
 npm i express -D typescript nodemon ts-node @types/express @types/node
 tsc --init --> initialize tsconfig.json
 
+for lints
+npm install --save-dev eslint-plugin-prettier
+npm install --save-dev --save-exact prettier
 
 -- running dev/build
-npm run dev
+npm run start:dev
 npm run build --> creates the /dest folder
 
 -- install netjs cli
@@ -24,3 +27,10 @@ npm run build --> creates the /dest folder
 
 for mongoose
 npm install --save mongoose @nestjs/mongoose
+
+add-environment of the mongodb daemon 
+run the mongod
+
+
+for swagger:
+npm install --save @nestjs/swagger swagger-ui-express
