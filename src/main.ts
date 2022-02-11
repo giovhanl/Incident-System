@@ -1,8 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { HttpExceptionFilter } from './filters/incident.filter.exception';
 
-const PORT = 3000;
+const envConfig = { 
+  PORT_API: 3001,
+  PORT_FRONT: 3000
+}
+
+const PORT_API = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +23,11 @@ async function bootstrap() {
 
   SwaggerModule.setup('/', app, document);
 
-  await app.listen(PORT);
+  // for react
+  app.enableCors();
+
+  app.useGlobalFilters(new HttpExceptionFilter());
+
+  await app.listen(envConfig.PORT_API);
 }
 bootstrap();

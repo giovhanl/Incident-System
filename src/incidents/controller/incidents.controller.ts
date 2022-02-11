@@ -1,7 +1,10 @@
 import { Body, Controller, Get, Post, Param } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from 'src/users/service/users.service';
-import { IncidentMasterModel } from '../model/incident.model';
+import { Role } from 'src/helpers/roles/role.enum';
+import { Roles } from 'src/helpers/roles/roles.decorator';
+import { IncidentMasterDto } from '../model/incident.modelDto';
+import { IncidentQueryDto } from '../model/incident.queryDto';
 import { IncidentsService } from '../service/incidents.service';
 
 
@@ -12,7 +15,7 @@ export class IncidentsController {
     constructor(
         private readonly incidentsService: IncidentsService) {}
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @ApiCreatedResponse({ type: IncidentMasterDto })
   @Get()
   getAll(): any {
     return this.incidentsService.getAll();
@@ -23,33 +26,34 @@ export class IncidentsController {
     return this.incidentsService.getIncidentByID(Number(id));
   }
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @Roles(Role.Admin)
+  @ApiCreatedResponse({ type: IncidentMasterDto })
   @Post('add')
-  addUser(@Body() body: IncidentMasterModel): any {
+  addUser(@Body() body: IncidentMasterDto): any {
     return this.incidentsService.addIncident(body);
   }
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @ApiCreatedResponse({ type: IncidentMasterDto })
   @Post('update')
-  updateUser(@Body() body: IncidentMasterModel): any {
+  updateUser(@Body() body: IncidentMasterDto): any {
     return this.incidentsService.update(body.incidentId, body);
   }
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @ApiCreatedResponse({ type: IncidentQueryDto })
   @Post('assign')
-  assignIncident(@Body() body: IncidentMasterModel): any {
-    return this.incidentsService.assignincident(body.incidentId, body.assignedTo);
+  assignIncident(@Body() body: IncidentQueryDto): any {
+    return this.incidentsService.assignincident(body.incidentId, body.userId);
   }
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @ApiCreatedResponse({ type: IncidentQueryDto })
   @Post('resolve')
-  resolveIncident(@Body() body: IncidentMasterModel): any {
-    return this.incidentsService.resolvedincident(body.incidentId, '33');
+  resolveIncident(@Body() body: IncidentQueryDto): any {
+    return this.incidentsService.resolvedincident(body.incidentId, body.userId);
   }
 
-  @ApiCreatedResponse({ type: IncidentMasterModel })
+  @ApiCreatedResponse({ type: IncidentQueryDto })
   @Post('acknowledge')
-  acknowledgeIncident(@Body() body: IncidentMasterModel): any {
-    return this.incidentsService.acknowledgeincident(body.incidentId, '33');
+  acknowledgeIncident(@Body() body: IncidentQueryDto): any {
+    return this.incidentsService.acknowledgeincident(body.incidentId, body.userId);
   }
 }

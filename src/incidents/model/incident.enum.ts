@@ -2,6 +2,8 @@
 
 export enum IncidentStatus {
     New = 1,
+    Assigned,
+    Acknowledge,
     OnHold,
     CannotDuplicate,
     DEVFixing,

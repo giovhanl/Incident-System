@@ -34,3 +34,9 @@ run the mongod
 
 for swagger:
 npm install --save @nestjs/swagger swagger-ui-express
+
+
+node: v16.13.1
+
+angular CLI (ng)
+npm install -g @angular/cli  ---> v. 13.2.3

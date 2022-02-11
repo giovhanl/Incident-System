@@ -1,4 +1,5 @@
 import { Document, FilterQuery, Model, UpdateQuery } from 'mongoose';
+import { IPaging } from 'src/helpers/paging/query.paging';
 import { IEntityRepository } from './entity.IRepository';
 
 export abstract class EntityRepository<T extends Document> implements IEntityRepository<T> {
@@ -19,6 +20,12 @@ export abstract class EntityRepository<T extends Document> implements IEntityRep
 
   async find(entityFilterQuery: FilterQuery<T>): Promise<T[] | null> {
     return this.entityModel.find(entityFilterQuery);
+  }
+
+  async query(paging: IPaging, entityFilterQuery: FilterQuery<T>): Promise<T[] | null> {
+    return this.entityModel
+      .find(entityFilterQuery)
+      .limit(paging.pageNo);
   }
 
   async create(entityData: unknown): Promise<T> {

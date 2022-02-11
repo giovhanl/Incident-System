@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
 
 @Injectable()
-export class IncidentMasterModel {
+export class IncidentMasterDto {
     constructor() {
         this.dateCreated = new Date();
         this.dateModified = new Date();
@@ -55,7 +55,7 @@ export class IncidentMasterModel {
   }
   
   @Injectable()
-  export class IncidentDetailModel {
+  export class IncidentDetailDto {
     constructor() {
         this.dateCreated = new Date();
         this.dateModified = new Date();
