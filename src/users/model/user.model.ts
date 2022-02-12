@@ -1,8 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
 
-@Injectable()
-export class UserModel {
+export class UserDto {
   id: number;
   @ApiProperty()
   userId: string;
@@ -10,5 +9,14 @@ export class UserModel {
   userName: string;
   @ApiProperty()
   userRole: string;
+  @ApiProperty()
+  password: string;
+}
+
+export class LoginDto
+{
+  @ApiProperty()
+  userName: string;
+  @ApiProperty()
   password: string;
 }

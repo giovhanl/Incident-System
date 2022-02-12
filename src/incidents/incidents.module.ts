@@ -3,7 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { IncidentDetailRepository, IncidentMasterRepository } from 'src/repos/incident.repository';
 import { UsersRepository } from 'src/repos/user.repository';
 import { IncidentDetail, IncidentDetailSchema, IncidentMaster, IncidentMasterSchema } from 'src/schema/incident.schema';
-import { UserModel } from 'src/users/model/user.model';
+import { UserDto } from 'src/users/model/user.model';
 import { UsersService } from 'src/users/service/users.service';
 import { UsersModule } from 'src/users/users.module';
 import { IncidentsController } from './controller/incidents.controller';

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IPaging } from 'src/helpers/paging/query.paging';
 import { IncidentDetailRepository, IncidentMasterRepository } from 'src/repos/incident.repository';
 import { IncidentDetail, IncidentMaster } from 'src/schema/incident.schema';
+import { UsersService } from 'src/users/service/users.service';
 import { IncidentStatus } from '../model/incident.enum';
 import { IncidentMasterDto } from '../model/incident.modelDto';
 
@@ -10,7 +11,8 @@ import { IncidentMasterDto } from '../model/incident.modelDto';
 export class IncidentsService {
   constructor(
     private readonly incidentMasterRepo: IncidentMasterRepository,
-    private readonly incidentDetailRepo: IncidentDetailRepository) {}
+    private readonly incidentDetailRepo: IncidentDetailRepository,
+    private readonly usersService: UsersService) {}
 
 
   getAll(): Promise<IncidentMaster[] | null> {
@@ -18,7 +20,7 @@ export class IncidentsService {
   }
 
   query(paging: IPaging): Promise<IncidentMaster[] | null> {
-    return this.incidentMasterRepo.query(paging, {});
+    return this.incidentMasterRepo.query(paging, paging.filter);
   }
 
   getIncidentByID(id: number): Promise<IncidentMaster> {

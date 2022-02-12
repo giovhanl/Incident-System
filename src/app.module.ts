@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { IncidentsModule } from './incidents/incidents.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { IncidentsModule } from './incidents/incidents.module';
       'mongodb://localhost:27017/IncidentSystem',
     ),
     IncidentsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

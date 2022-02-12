@@ -1,13 +1,13 @@
 import { Body, Controller, Get, Post, Param } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { UserModel } from '../model/user.model';
+import { UserDto } from '../model/user.model';
 import { UsersService } from '../service/users.service';
 @ApiTags("Users")
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @ApiCreatedResponse({ type: UserModel })
+  @ApiCreatedResponse({ type: UserDto })
   @Get()
   getAll(): any {
     return this.usersService.getAll();
@@ -18,15 +18,15 @@ export class UsersController {
     return this.usersService.getUserByID(Number(id));
   }
 
-  @ApiCreatedResponse({ type: UserModel })
+  @ApiCreatedResponse({ type: UserDto })
   @Post('add')
-  addUser(@Body() body: UserModel): any {
+  addUser(@Body() body: UserDto): any {
     return this.usersService.addUser(body);
   }
 
-  @ApiCreatedResponse({ type: UserModel })
+  @ApiCreatedResponse({ type: UserDto })
   @Post('update')
-  updateUser(@Body() body: UserModel): any {
+  updateUser(@Body() body: UserDto): any {
     return this.usersService.update(body.userId, body);
   }
 }
