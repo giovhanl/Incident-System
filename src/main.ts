@@ -2,13 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './filters/incident.filter.exception';
+import { envConfig } from './main.config';
 
-const envConfig = { 
-  PORT_API: 3001,
-  PORT_FRONT: 3000
-}
-
-const PORT_API = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
