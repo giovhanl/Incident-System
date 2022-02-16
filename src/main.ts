@@ -1,3 +1,4 @@
+import { BadRequestException, ValidationError, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -21,7 +22,13 @@ async function bootstrap() {
   // for react
   app.enableCors();
 
-  app.useGlobalFilters(new HttpExceptionFilter());
+  //app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalPipes(new ValidationPipe({
+    disableErrorMessages: false,
+    //exceptionFactory: (validationErrors: ValidationError[] = []) => {
+    //  return new BadRequestException(validationErrors);
+    //},
+  }));
 
   await app.listen(envConfig.PORT_API);
 }

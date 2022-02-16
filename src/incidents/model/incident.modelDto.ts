@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty } from "class-validator";
 
 @Injectable()
 export class IncidentMasterDto {
@@ -12,15 +13,18 @@ export class IncidentMasterDto {
     incidentId: string;
 
     @ApiProperty()
+    @IsNotEmpty()
     title: string;
   
     @ApiProperty()
+    @IsNotEmpty()
     description: string;
   
     @ApiProperty()
     expectedBehavior: string;
     
     @ApiProperty()
+    @IsNotEmpty()
     state: string;
   
     @ApiProperty()
@@ -30,6 +34,7 @@ export class IncidentMasterDto {
     foundInVersion: string;
   
     @ApiProperty()
+    @IsNotEmpty()
     developer: string;
   
     @ApiProperty()

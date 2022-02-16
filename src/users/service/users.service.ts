@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { UsersRepository } from 'src/repos/user.repository';
 import { User } from 'src/schema/user.schema';
 import { UserDto } from '../model/user.model';
@@ -20,7 +20,11 @@ export class UsersService {
     return await this.usersRepository.findOne({ username: username });
   }
 
-  addUser(userModel: UserDto): Promise<User> {
+  async addUser(userModel: UserDto): Promise<User> | null {
+    const user = await this.getUserByName(userModel.username);
+    if (user) {
+      throw new BadRequestException('user already exist');
+    }
     return this.usersRepository.create({
       userId: userModel.userId,
       username: userModel.username,

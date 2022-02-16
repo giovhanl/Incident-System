@@ -45,3 +45,7 @@ node: v16.13.1
 
 angular CLI (ng)
 npm install -g @angular/cli  ---> v. 13.2.3
+
+client validator:
+npm install --save class-validator
+npm install --save class-transformer

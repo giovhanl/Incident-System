@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from 'src/users/service/users.service';
 import { Role } from 'src/helpers/roles/role.enum';
@@ -28,11 +28,13 @@ export class IncidentsController {
 
   @Roles(Role.Admin)
   @ApiCreatedResponse({ type: IncidentMasterDto })
+  @UsePipes(new ValidationPipe())
   @Post('add')
   addUser(@Body() body: IncidentMasterDto): any {
     return this.incidentsService.addIncident(body);
   }
 
+  @UsePipes(new ValidationPipe())
   @ApiCreatedResponse({ type: IncidentMasterDto })
   @Post('update')
   updateUser(@Body() body: IncidentMasterDto): any {
