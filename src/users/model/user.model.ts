@@ -6,7 +6,7 @@ export class UserDto {
   @ApiProperty()
   userId: string;
   @ApiProperty()
-  userName: string;
+  username: string;
   @ApiProperty()
   userRole: string;
   @ApiProperty()
@@ -16,7 +16,7 @@ export class UserDto {
 export class LoginDto
 {
   @ApiProperty()
-  userName: string;
+  username: string;
   @ApiProperty()
   password: string;
 }

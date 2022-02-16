@@ -6,26 +6,25 @@ export abstract class EntityRepository<T extends Document> implements IEntityRep
   constructor(protected readonly entityModel: Model<T>) {}
 
   async findOne(entityFilterQuery: FilterQuery<T>): Promise<T | null> {
-    return this.entityModel
+    return await this.entityModel
       .findOne(entityFilterQuery, {
         _id: 0,
-        __V: 0,
-      })
-      .exec();
+      }).lean();
+      //.exec();
   }
 
-  async findById(id: number): Promise<T | null> {
-    return this.entityModel.findById(id);
+  async findById(id: string): Promise<T | null> {
+    return await this.entityModel.findOne({ id: id}).lean();
   }
 
   async find(entityFilterQuery: FilterQuery<T>): Promise<T[] | null> {
-    return this.entityModel.find(entityFilterQuery);
+    return this.entityModel.find(entityFilterQuery).lean();
   }
 
   async query(paging: IPaging, entityFilterQuery: FilterQuery<T>): Promise<T[] | null> {
     return this.entityModel
       .find(entityFilterQuery)
-      .limit(paging.pageNo);
+      .limit(paging.pageNo).lean();
   }
 
   async create(entityData: unknown): Promise<T> {

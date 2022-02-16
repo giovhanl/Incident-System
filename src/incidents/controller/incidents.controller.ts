@@ -23,7 +23,7 @@ export class IncidentsController {
 
   @Get(':id')
   getIncidentbyId(@Param('id') id: string): any {
-    return this.incidentsService.getIncidentByID(Number(id));
+    return this.incidentsService.getIncidentByID(id);
   }
 
   @Roles(Role.Admin)

@@ -23,7 +23,7 @@ export class IncidentsService {
     return this.incidentMasterRepo.query(paging, paging.filter);
   }
 
-  getIncidentByID(id: number): Promise<IncidentMaster> {
+  getIncidentByID(id: string): Promise<IncidentMaster> {
     return this.incidentMasterRepo.findById(id);
   }
 

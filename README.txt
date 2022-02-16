@@ -38,6 +38,8 @@ npm install --save @nestjs/swagger swagger-ui-express
 $ npm install --save @nestjs/passport passport passport-local
 $ npm install --save-dev @types/passport-local
 
+for sessions
+npm install express-session
 
 node: v16.13.1
 

@@ -12,18 +12,18 @@ export class UsersService {
     return this.usersRepository.find({});
   }
 
-  getUserByID(id: number): Promise<User> {
-    return this.usersRepository.findById(id);
+  async getUserByID(id: string): Promise<User> {
+    return  await this.usersRepository.findOne({ _id: id});
   }
 
-  getUserByName(userName: string): Promise<User> {
-    return this.usersRepository.findOne(user => user.userName == userName);
+  async getUserByName(username: string): Promise<User> {
+    return await this.usersRepository.findOne({ username: username });
   }
 
   addUser(userModel: UserDto): Promise<User> {
     return this.usersRepository.create({
       userId: userModel.userId,
-      userName: userModel.userName,
+      username: userModel.username,
       password: userModel.password,
       userRole: 'Admin' });
   }

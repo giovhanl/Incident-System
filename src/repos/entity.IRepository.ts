@@ -4,7 +4,7 @@ export interface  IEntityRepository<T extends Document> {
 
   findOne(entityFilterQuery: FilterQuery<T>): Promise<T | null>;
 
-  findById(id: number): Promise<T | null>;
+  findById(id: string): Promise<T | null>;
 
   find(entityFilterQuery: FilterQuery<T>): Promise<T[] | null>;
 

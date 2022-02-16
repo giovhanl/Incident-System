@@ -9,11 +9,11 @@ export class User {
   userId: string;
 
   @Prop()
-  userName: string;
+  username: string;
 
   @Prop()
   userRole: string;
-  cmd;
+
   @Prop()
   password: string;
 }

@@ -15,7 +15,7 @@ export class UsersController {
 
   @Get(':id')
   getUserbyId(@Param('id') id: string): any {
-    return this.usersService.getUserByID(Number(id));
+    return this.usersService.getUserByID(id);
   }
 
   @ApiCreatedResponse({ type: UserDto })
