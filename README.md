@@ -49,13 +49,15 @@ $ npm run start:prod
 ```bash
 docker-compose up
 ```
-# fyi:
+## fyi:
 ```bash
    app url     : http://localhost:3001
    mongo-port  : 27017
 
    the application and mongodb are in the docker container
    (see docker-compose.yml) 
+```
+
 ```bash
 
 ## Test

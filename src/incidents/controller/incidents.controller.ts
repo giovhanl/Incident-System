@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Param, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, UsePipes, ValidationPipe, UseGuards } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from 'src/users/service/users.service';
 import { Role } from 'src/helpers/roles/role.enum';
@@ -6,10 +6,12 @@ import { Roles } from 'src/helpers/roles/roles.decorator';
 import { IncidentMasterDto } from '../model/incident.modelDto';
 import { IncidentQueryDto } from '../model/incident.queryDto';
 import { IncidentsService } from '../service/incidents.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 
 
 @ApiTags("incidents")
+@UseGuards(JwtAuthGuard)
 @Controller('incidents')
 export class IncidentsController {
     constructor(
@@ -41,6 +43,7 @@ export class IncidentsController {
     return this.incidentsService.update(body.incidentId, body);
   }
 
+  @Roles(Role.Admin)
   @ApiCreatedResponse({ type: IncidentQueryDto })
   @Post('assign')
   assignIncident(@Body() body: IncidentQueryDto): any {

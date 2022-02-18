@@ -29,10 +29,14 @@ export class UsersService {
       userId: userModel.userId,
       username: userModel.username,
       password: userModel.password,
-      userRole: 'Admin' });
+      userRole: userModel.userRole });
   }
 
   async update(userId: string, userUpdates: UserDto): Promise<User> {
     return this.usersRepository.update({ userId }, userUpdates);
+  }
+
+  async addRole(username: string, roles: []): Promise<User> {
+    return this.usersRepository.update({ username }, { UserRole: roles});
   }
 }

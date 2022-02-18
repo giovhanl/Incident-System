@@ -17,7 +17,7 @@ export class UserDto {
   username: string;
 
   @ApiProperty()
-  userRole: string;
+  userRole: Array<string>;
 
   @IsNotEmpty()
   @ApiProperty()
