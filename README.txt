@@ -49,3 +49,15 @@ npm install -g @angular/cli  ---> v. 13.2.3
 client validator:
 npm install --save class-validator
 npm install --save class-transformer
+
+
+react:
+tailwind
+craco
+
+react installation.
+npm create react-app incident-system --template typescript
+
+npm install react-bootstrap bootstrap@5.1.3
+
+npm start
