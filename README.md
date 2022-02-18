@@ -32,7 +32,7 @@
 $ npm install
 ```
 
-## Running the app
+## Running the app (local)
 
 ```bash
 # development
@@ -44,6 +44,16 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Running the app (via docker)
+docker-compose up
+  
+# fyi:
+   app url     : http://localhost:3001
+   mongo-port  : 27017
+
+   the application and mongodb are in the docker container
+   (see docker-compose.yml) 
 
 ## Test
 

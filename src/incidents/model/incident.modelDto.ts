@@ -9,7 +9,7 @@ export class IncidentMasterDto {
         this.dateModified = new Date();
     }
 
-    @ApiProperty()
+    //@ApiProperty()
     incidentId: string;
 
     @ApiProperty()
@@ -46,16 +46,16 @@ export class IncidentMasterDto {
     @ApiProperty()
     incidentType: string;
   
-    @ApiProperty()
+    //@ApiProperty()
     dateCreated: Date;
   
-    @ApiProperty()
+    //@ApiProperty()
     dateModified: Date;
   
-    @ApiProperty()
+    //@ApiProperty()
     createdBy: string;
   
-    @ApiProperty()
+    //@ApiProperty()
     modifiedBy: string;
   }
   
