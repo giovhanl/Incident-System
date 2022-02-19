@@ -1,8 +1,16 @@
-import { Body, Controller, Get, Post, Param, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Param,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { UserDto } from '../model/user.model';
 import { UsersService } from '../service/users.service';
-@ApiTags("Users")
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}

@@ -11,6 +11,7 @@ tsc --init --> initialize tsconfig.json
 
 for lints
 npm install --save-dev eslint-plugin-prettier
+npm install --save-dev eslint-config-prettier
 npm install --save-dev --save-exact prettier
 
 -- running dev/build

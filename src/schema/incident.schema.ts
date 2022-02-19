@@ -13,7 +13,7 @@ export class IncidentMaster {
 
   @Prop()
   expectedBehavior: string;
-  
+
   @Prop()
   state: string;
 
@@ -48,8 +48,6 @@ export class IncidentMaster {
   modifiedBy: string;
 }
 
-
-
 @Schema()
 export class IncidentDetail {
   @Prop()
@@ -77,5 +75,7 @@ export class IncidentDetail {
   modifiedBy: string;
 }
 
-export const IncidentMasterSchema = SchemaFactory.createForClass(IncidentMaster);
-export const IncidentDetailSchema = SchemaFactory.createForClass(IncidentDetail);
+export const IncidentMasterSchema =
+  SchemaFactory.createForClass(IncidentMaster);
+export const IncidentDetailSchema =
+  SchemaFactory.createForClass(IncidentDetail);

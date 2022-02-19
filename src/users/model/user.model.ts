@@ -1,6 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { ApiProperty } from "@nestjs/swagger";
-import { IsDefined, IsEmail, IsNotEmpty } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsDefined, IsEmail, IsNotEmpty } from 'class-validator';
 
 export class UserDto {
   id: number;
@@ -24,8 +23,7 @@ export class UserDto {
   password: string;
 }
 
-export class LoginDto
-{
+export class LoginDto {
   @ApiProperty()
   @IsEmail()
   @IsNotEmpty()

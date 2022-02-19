@@ -1,4 +1,4 @@
-import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersRepository } from 'src/repos/user.repository';
 import { User } from 'src/schema/user.schema';
 import { UserDto } from '../model/user.model';
@@ -7,13 +7,16 @@ import { UserDto } from '../model/user.model';
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-
   getAll(): Promise<User[]> {
     return this.usersRepository.find({});
   }
 
   async getUserByID(id: string): Promise<User> {
-    return  await this.usersRepository.findOne({ _id: id});
+    return await this.usersRepository.findOne({ _id: id });
+  }
+
+  async getUserByUserID(id: string): Promise<User> {
+    return await this.usersRepository.findOne({ userId: id });
   }
 
   async getUserByName(username: string): Promise<User> {
@@ -29,7 +32,8 @@ export class UsersService {
       userId: userModel.userId,
       username: userModel.username,
       password: userModel.password,
-      userRole: userModel.userRole });
+      userRole: userModel.userRole,
+    });
   }
 
   async update(userId: string, userUpdates: UserDto): Promise<User> {
@@ -37,6 +41,6 @@ export class UsersService {
   }
 
   async addRole(username: string, roles: []): Promise<User> {
-    return this.usersRepository.update({ username }, { UserRole: roles});
+    return this.usersRepository.update({ username }, { UserRole: roles });
   }
 }

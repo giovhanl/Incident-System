@@ -1,7 +1,6 @@
-import { Document, FilterQuery, Model, UpdateQuery } from 'mongoose';
+import { Document, FilterQuery, UpdateQuery } from 'mongoose';
 
-export interface  IEntityRepository<T extends Document> {
-
+export interface IEntityRepository<T extends Document> {
   findOne(entityFilterQuery: FilterQuery<T>): Promise<T | null>;
 
   findById(id: string): Promise<T | null>;

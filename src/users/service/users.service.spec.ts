@@ -21,6 +21,6 @@ describe('UsersService', () => {
   });
 
   it('should be defined', () => {
-    expect(service.getUserByID(0)).toStrictEqual([{"id": 0, "name": "Gio"}]);
+    expect(service.getUserByID(0)).toStrictEqual([{ id: 0, name: 'Gio' }]);
   });
 });

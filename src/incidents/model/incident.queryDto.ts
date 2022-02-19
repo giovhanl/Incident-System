@@ -1,14 +1,11 @@
-import { Injectable } from "@nestjs/common";
-import { ApiProperty } from "@nestjs/swagger";
+import { Injectable } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Injectable()
 export class IncidentQueryDto {
+  @ApiProperty()
+  incidentId: string;
 
-    @ApiProperty()
-    incidentId: string;
-
-    @ApiProperty()
-    userId: string;
-
-  }
-  
+  @ApiProperty()
+  userId: string;
+}

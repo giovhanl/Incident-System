@@ -1,5 +1,5 @@
 export interface IPaging {
-    pageNo: number;
-    recordId?: string;
-    filter: object;
+  pageNo: number;
+  recordId?: string;
+  filter: object;
 }

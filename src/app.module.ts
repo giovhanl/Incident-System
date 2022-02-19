@@ -10,9 +10,7 @@ import { envConfig } from './main.config';
 @Module({
   imports: [
     UsersModule,
-    MongooseModule.forRoot(
-      envConfig.DB_CONNSTR,
-    ),
+    MongooseModule.forRoot(envConfig.DB_CONNSTR),
     IncidentsModule,
     AuthModule,
   ],
