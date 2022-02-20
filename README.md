@@ -49,22 +49,24 @@ $ npm run start:prod
 ```bash
 docker-compose up
 ```
-## fyi:
+## Application Information:
 ```bash
    app url     : http://localhost:3001
    mongo-port  : 27017
 
    the application and mongodb are in the docker container
    (see docker-compose.yml) 
+
+   
 ```
 ## POSTMAN test:
 ```bash
 1. import file test\incident.postman_collection.json to POSTMAN
-```
+``` 
 
 ```bash
 
-## Test
+## Test (NOTE: this part is not complete yet)
 
 ```bash
 # unit tests
