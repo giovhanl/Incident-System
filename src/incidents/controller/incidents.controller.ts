@@ -43,7 +43,7 @@ export class IncidentsController {
   @ApiCreatedResponse({ type: IncidentMasterDto })
   @UsePipes(new ValidationPipe())
   @Post('add')
-  addUser(@Body() body: IncidentMasterDto): any {
+  addIncident(@Body() body: IncidentMasterDto): any {
     return this.incidentsService.addIncident(body);
   }
 

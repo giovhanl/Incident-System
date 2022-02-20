@@ -57,6 +57,10 @@ docker-compose up
    the application and mongodb are in the docker container
    (see docker-compose.yml) 
 ```
+## POSTMAN test:
+```bash
+1. import file test\incident.postman_collection.json to POSTMAN
+```
 
 ```bash
 

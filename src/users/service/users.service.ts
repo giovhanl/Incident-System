@@ -29,7 +29,7 @@ export class UsersService {
       throw new BadRequestException('user already exist');
     }
     return this.usersRepository.create({
-      userId: userModel.userId,
+      userId: userModel.username,
       username: userModel.username,
       password: userModel.password,
       userRole: userModel.userRole,
@@ -38,6 +38,13 @@ export class UsersService {
 
   async update(userId: string, userUpdates: UserDto): Promise<User> {
     return this.usersRepository.update({ userId }, userUpdates);
+  }
+
+  async updatebyusername(
+    username: string,
+    userUpdates: UserDto,
+  ): Promise<User> {
+    return this.usersRepository.update({ username }, userUpdates);
   }
 
   async addRole(username: string, roles: []): Promise<User> {

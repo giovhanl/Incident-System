@@ -36,6 +36,6 @@ export class UsersController {
   @ApiCreatedResponse({ type: UserDto })
   @Post('update')
   updateUser(@Body() body: UserDto): any {
-    return this.usersService.update(body.userId, body);
+    return this.usersService.updatebyusername(body.username, body);
   }
 }
